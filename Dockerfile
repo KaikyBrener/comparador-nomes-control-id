@@ -1,17 +1,15 @@
-# Dockerfile (coloque na raiz do repo)
-# Imagem base do runtime
+# Use imagem runtime e SDK do .NET 8
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 5000
-# Permite binding na 0.0.0.0:5000 via variável de ambiente
 ENV ASPNETCORE_URLS=http://0.0.0.0:5000
 
-# Imagem para build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copia e restaura - otimiza cache se houver .csproj
+# Se houver .sln e vários projetos, copiar e restaurar separadamente melhora cache
 COPY *.sln ./
+# Copia todos os csproj (ajuste se necessário)
 COPY **/*.csproj ./
 RUN dotnet restore --no-cache || true
 
@@ -22,6 +20,13 @@ RUN dotnet publish -c Release -o /app/publish
 # Imagem final
 FROM base AS final
 WORKDIR /app
+
+# Copia publicação
 COPY --from=build /app/publish .
-# Usa shell para executar o primeiro dll encontrado (evita hardcode do nome do projeto)
-ENTRYPOINT ["sh", "-c", "dotnet /app/publish/*.dll"]
+
+# Copia o entrypoint script e garante permissão de execução
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Usa o script para localizar e executar o primeiro DLL publicado
+ENTRYPOINT ["/entrypoint.sh"]
