@@ -185,4 +185,4 @@ app.MapPost("/comparar", async (HttpContext context) =>
 });
 
 // IMPORTANTE: usar localhost
-app.Run("http://localhost:5000");
+app.Run();
