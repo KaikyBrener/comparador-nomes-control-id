@@ -72,7 +72,7 @@ Depois é só rodar o .exe sem precisar do .NET instalado!
 
 - ✅ Comparação case-insensitive
 - ✅ Normalização de espaços
-- ✅ Validaç��o de entrada
+- ✅ Validação de entrada
 - ✅ Interface responsiva
 - ✅ Processamento em tempo real
 
