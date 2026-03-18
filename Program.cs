@@ -6,6 +6,25 @@ using System.Collections.Generic;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
+// Adiciona serviços
+builder.Services.AddControllers();
+
+// Configura CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+    );
+});
+
+// Usa CORS
+app.UseCors("AllowAll");
+
+// Rotas padrão
+app.MapControllers();
+
 // FRONTEND
 app.MapGet("/", () => Results.Content(@"
 <!DOCTYPE html>
