@@ -78,4 +78,4 @@ Depois é só rodar o .exe sem precisar do .NET instalado!
 
 ---
 
-Desenvolvido com ❤️ em C#
+Desenvolvido em C#
