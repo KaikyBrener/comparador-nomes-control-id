@@ -1,29 +1,81 @@
-# Comparador Nomes Control ID
+# 🔍 Comparador de Nomes - Control ID
 
-## Project Documentation
+## 📋 Descrição
+Sistema web local em C# que compara duas listas de nomes:
+- **Lista do sistema interno**
+- **Lista do dispositivo Control ID**
 
-### Overview
-This project aims to compare names with their respective control IDs to ensure data integrity within our system.
+Identifica nomes que existem no Control ID mas NÃO estão no sistema, permitindo sua remoção.
 
-### Setup
-Follow these instructions to set up the project locally:
-1. Clone the repository: `git clone https://github.com/KaikyBrener/comparador-nomes-control-id.git`
-2. Navigate into the project directory: `cd comparador-nomes-control-id`
-3. Install dependencies: `npm install`
+## 🚀 Como Rodar
 
-### Usage
-To use the project, run the following command:
+### Pré-requisitos
+- .NET 8.0 SDK instalado
+
+### Instalação e Execução
+```bash
+# 1. Clonar o repositório
+git clone https://github.com/KaikyBrener/comparador-nomes-control-id.git
+cd comparador-nomes-control-id
+
+# 2. Restaurar dependências
+dotnet restore
+
+# 3. Executar o projeto
+dotnet run
+
+# 4. Acessar no navegador
+http://localhost:5000
 ```
-npm start
+
+## 📦 Gerar Executável (.exe)
+
+```bash
+dotnet publish -c Release -r win-x64 --self-contained
+
+# Arquivo gerado em: bin/Release/net8.0/win-x64/publish/ComparadorNomes.exe
 ```
 
-### Contributing
-We welcome contributions! Please follow these steps:
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature-xyz`.
-3. Make your changes and commit them: `git commit -m 'Add some feature'`.
-4. Push to the branch: `git push origin feature-xyz`.
-5. Open a pull request.
+Depois é só rodar o .exe sem precisar do .NET instalado!
 
-### License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## ✨ Funcionalidades
+
+✅ **Entrada Manual** - Cole as listas direto nos campos de texto  
+✅ **Upload de Arquivos** - Envie arquivos .txt  
+✅ **Comparação Inteligente** - Ignora case e espaços extras  
+✅ **Resultado Visual** - Modal com lista de nomes para remover  
+✅ **Copiar para Clipboard** - Um clique para copiar  
+✅ **Download .txt** - Baixa arquivo pronto para usar  
+✅ **Sem Armazenamento** - Tudo processado localmente  
+
+## 🏗️ Arquitetura
+
+- **Backend**: ASP.NET Core Minimal API (C#)
+- **Frontend**: HTML + Bootstrap 5 + JavaScript
+- **Comunicação**: HTTP POST
+- **Execução**: Local, sem internet
+
+## 📝 Como Usar
+
+1. **Preencha ou envie** as duas listas (Sistema e Control ID)
+2. **Clique em Comparar**
+3. **Visualize** a lista de nomes para remover
+4. **Copie** ou **Baixe** o resultado
+
+## 🔐 Segurança
+
+- Nenhum dado armazenado
+- Execução 100% local
+- Sem conexão com servidores externos
+
+## 📌 Requisitos
+
+- ✅ Comparação case-insensitive
+- ✅ Normalização de espaços
+- ✅ Validaç��o de entrada
+- ✅ Interface responsiva
+- ✅ Processamento em tempo real
+
+---
+
+Desenvolvido com ❤️ em C#
