@@ -67,7 +67,7 @@ app.MapGet("/", () => Results.Content(@"
       <div class=""container p-4"">
         <!-- Título -->
         <div class=""text-center mb-5"">
-          <h1 class=""fw-bold display-4"" style=""color: #60a5fa;"">🔍 Comparador Empresarial</h1>
+          <h1 class=""fw-bold display-4"" style=""color: #60a5fa;"">🔍 Comparador De Nomes</h1>
           <p class=""fs-5 text-secondary"">Detecta divergências e semelhanças entre listas de nomes com rapidez!</p>
         </div>
         <!-- Formulário -->
@@ -108,6 +108,7 @@ app.MapGet("/", () => Results.Content(@"
           </div>
         </div>
       </div>
+      
     </main>
 
     <!-- Bootstrap Bundle -->
