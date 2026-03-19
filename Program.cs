@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Cors;
 using System.Linq;
 using System.Collections.Generic;
 
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
 
 // Adiciona serviços
 builder.Services.AddControllers();
@@ -18,6 +19,8 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod()
     );
 });
+
+var app = builder.Build();
 
 // Usa CORS
 app.UseCors("AllowAll");
@@ -64,7 +67,6 @@ app.MapGet("/", () => Results.Content(@"
         resize: none; background: #334155; color: #e5e7eb;
         border-radius: 8px; border: 1px solid #3b82f6;
       }
-      /* Botão com gradiente destacado */
       .btn-action {
         background: linear-gradient(135deg, #2563eb, #3b82f6);
         color: #fff; font-weight: 700; letter-spacing: 0.4px;
@@ -84,12 +86,10 @@ app.MapGet("/", () => Results.Content(@"
   <body>
     <main class=""min-vh-100 d-flex flex-column justify-content-center align-items-center"">
       <div class=""container p-4"">
-        <!-- Título -->
         <div class=""text-center mb-5"">
           <h1 class=""fw-bold display-4"" style=""color: #60a5fa;"">🔍 Comparador De Nomes</h1>
           <p class=""fs-5 text-secondary"">Detecta divergências e semelhanças entre listas de nomes com rapidez!</p>
         </div>
-        <!-- Formulário -->
         <div class=""card p-5 mb-5"">
           <div class=""row g-4"">
             <div class=""col-md-6"">
@@ -107,7 +107,6 @@ app.MapGet("/", () => Results.Content(@"
             <button id=""btnComparar"" class=""btn-action"">Comparar 🔍</button>
           </div>
         </div>
-        <!-- Resultados -->
         <div class=""card"">
           <ul class=""nav nav-tabs"" id=""resultTabs"">
             <li class=""nav-item"">
@@ -127,12 +126,9 @@ app.MapGet("/", () => Results.Content(@"
           </div>
         </div>
       </div>
-      
     </main>
 
-    <!-- Bootstrap Bundle -->
     <script src=""https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js""></script>
-
     <script>
       function apiUrl(path) {
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
